@@ -153,21 +153,21 @@ bool checkCorrectness(size_t buckets, std::shared_ptr<HashFamily> family, size_t
     int value = gen(engine);
     if ((reference.count(value) > 0) != table.contains(value)) {
       /* Debugging */
-      table.print();
-      std::cout << "table size: " << table.getSize() << std::endl;
-      std::cout << "reference.contains(" << value << "): "
-      << (reference.count(value) > 0 ? "true" : "false") << std::endl;
+      // table.print();
+      // std::cout << "table size: " << table.getSize() << std::endl;
+      // std::cout << "reference.contains(" << value << "): "
+      // << (reference.count(value) > 0 ? "true" : "false") << std::endl;
 
-      std::cout << "table.contains(" << value << "): " 
-      << (table.contains(value) > 0 ? "true" : "false") << std::endl << std::endl;
+      // std::cout << "table.contains(" << value << "): " 
+      // << (table.contains(value) > 0 ? "true" : "false") << std::endl << std::endl;
       return false;
     }
     if (coinFlip(engine)) {
-      std::cout << "insert(" << value << ")\n";
+      // std::cout << "insert(" << value << ")\n";
       reference.insert(value);
       table.insert(value);      
     } else {
-      std::cout << "remove(" << value << ")\n";
+      // std::cout << "remove(" << value << ")\n";
       reference.erase(value);
       table.remove(value);
     }
