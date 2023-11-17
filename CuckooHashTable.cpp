@@ -24,6 +24,10 @@ CuckooHashTable::~CuckooHashTable() {
 }
 
 void CuckooHashTable::insert(int data) {
+  if (contains(data)) {
+    return;
+  }
+
   /* Get the key for the element. */
   int k1 = h1(data) % (size / 2);
   int k2;
@@ -66,7 +70,7 @@ void CuckooHashTable::insert(int data) {
     else {
 
       /* Get the new key, */
-      k2 = h2(data) % (size / 2);
+      k2 = h2(displaced) % (size / 2);
 
       /* and check if t2 is open in that slot. If it is, place it there. */
       if (t2[k2] == -1) {
